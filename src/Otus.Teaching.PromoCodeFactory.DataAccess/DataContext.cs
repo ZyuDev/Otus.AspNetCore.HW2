@@ -3,10 +3,13 @@ using Otus.Teaching.PromoCodeFactory.Core.Domain.Administration;
 using Otus.Teaching.PromoCodeFactory.Core.Domain.PromoCodeManagement;
 using Otus.Teaching.PromoCodeFactory.DataAccess.Data;
 using Otus.Teaching.PromoCodeFactory.DataAccess.EntityConfigurations;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Otus.Teaching.PromoCodeFactory.WebHost
+namespace Otus.Teaching.PromoCodeFactory.DataAccess
 {
-    public class DataContext: DbContext
+    public class DataContext : DbContext
     {
         public DbSet<Preference> Preferences { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -14,7 +17,7 @@ namespace Otus.Teaching.PromoCodeFactory.WebHost
         public DataContext()
         {
             Database.EnsureDeleted();
-            Database.EnsureCreated();    
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
