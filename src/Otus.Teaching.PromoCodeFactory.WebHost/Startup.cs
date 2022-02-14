@@ -21,6 +21,10 @@ namespace Otus.Teaching.PromoCodeFactory.WebHost
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+            // DataContext
+            services.AddEntityFrameworkSqlite().AddDbContext<DataContext>();
+
             services.AddControllers();
             services.AddScoped(typeof(IRepository<Employee>), (x) => 
                 new InMemoryRepository<Employee>(FakeDataFactory.Employees));
@@ -36,6 +40,7 @@ namespace Otus.Teaching.PromoCodeFactory.WebHost
                 options.Title = "PromoCode Factory API Doc";
                 options.Version = "1.0";
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
